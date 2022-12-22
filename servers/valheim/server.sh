@@ -2,39 +2,41 @@
 
 echo current user $USER
 
+echo ---------------------------------------------------------
+
 apt update
 
-echo \n---------------------------------------------\n
+echo ---------------------------------------------------------
 
-#Install Docker
+# Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 apt install docker-compose
 
-echo \n---------------------------------------------\n
+echo ---------------------------------------------------------
 
-#Install GIT
+# Install GIT
 apt install git
 git --version
 
-echo \n---------------------------------------------\n
+echo ---------------------------------------------------------
 
-#Install Cron
+# Install Cron
 apt-get install cron
 
-echo \n---------------------------------------------\n
+echo ---------------------------------------------------------
 
-#Download saves
+# Download saves
 mkdir -p $HOME/valheim-server/config/worlds_local $HOME/valheim-server/data
 wget -P $HOME/valheim-server/config/worlds_local https://github.com/IgorSSK/GameCenter.DServers/blob/main/servers/valheim/saves/Gameplay.db
 wget -P $HOME/valheim-server/config/worlds_local https://github.com/IgorSSK/GameCenter.DServers/blob/main/servers/valheim/saves/Gameplay.fwl
 
-echo \n---------------------------------------------\n
+echo ---------------------------------------------------------
 
-#Get Docker file from GIT
+# Get Docker file from GIT
 curl https://github.com/IgorSSK/GameCenter.DServers/blob/main/servers/valheim/docker-compose.yml
 
-echo \n---------------------------------------------\n
+echo ---------------------------------------------------------
 
-#Up Container
+# Up Container
 docker-compose up
