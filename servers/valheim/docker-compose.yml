@@ -2,6 +2,7 @@ version: "3"
 services:
   valheim-server: 
     image: ghcr.io/lloesche/valheim-server
+    user: ${CURRENT_UID}
     cap_add:
       - sys_nice
     volumes: 

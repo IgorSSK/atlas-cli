@@ -34,7 +34,7 @@ wget -P $HOME/valheim-server/config/worlds_local https://github.com/IgorSSK/Game
 echo "---------------------------------------------------------"
 
 # Get Docker file from GIT
-curl https://raw.githubusercontent.com/IgorSSK/GameCenter.DServers/main/servers/valheim/docker-compose.yml
+wget https://raw.githubusercontent.com/IgorSSK/GameCenter.DServers/main/servers/valheim/docker-compose.yml
 
 echo "---------------------------------------------------------"
 
