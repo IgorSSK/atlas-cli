@@ -4,25 +4,25 @@ echo current user $USER
 
 echo "---------------------------------------------------------"
 
-apt update
+sudo apt update
 
 echo "---------------------------------------------------------"
 
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-apt install docker-compose
+sudo sh get-docker.sh
+sudo apt install docker-compose
 
 echo "---------------------------------------------------------"
 
 # Install GIT
-apt install git
+sudo apt install git
 git --version
 
 echo "---------------------------------------------------------"
 
 # Install Cron
-apt-get install cron
+sudo apt-get install cron
 
 echo "---------------------------------------------------------"
 
@@ -39,4 +39,4 @@ curl https://github.com/IgorSSK/GameCenter.DServers/blob/main/servers/valheim/do
 echo "---------------------------------------------------------"
 
 # Up Container
-docker-compose up
+sudo docker-compose up
