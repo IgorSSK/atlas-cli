@@ -23,6 +23,6 @@ services:
       - AUTO_BACKUP_ON_UPDATE=1
       - AUTO_BACKUP_ON_SHUTDOWN=1
     volumes:
-      - $HOME/valheim/saves:/home/steam/.config/unity3d/IronGate/Valheim
-      - $HOME/valheim/server:/home/steam/valheim
-      - $HOME/valheim/backups:/home/steam/backups
+      - ./steam/valheim/saves:/home/steam/.config/unity3d/IronGate/Valheim
+      - ./steam/valheim/server:/home/steam/valheim
+      - ./steam/valheim/backups:/home/steam/backups
