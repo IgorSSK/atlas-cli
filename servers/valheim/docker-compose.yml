@@ -1,28 +1,28 @@
 version: "3"
 services:
-  valheim-server: 
-    image: ghcr.io/lloesche/valheim-server
-    cap_add:
-      - sys_nice
-    volumes: 
-      - /home/ubuntu/valheim-server/data:/opt/valheim
-      - /home/ubuntu/valheim-server/config:/config
-    ports: 
-      - "2456-2458:2456-2458/udp"
-      - "8080:80/tcp"
-    restart: always
-    stop_grace_period: 2m
+  valheim:
+    image: mbround18/valheim:latest
+    ports:
+      - 2456:2456/udp
+      - 2457:2457/udp
+      - 2458:2458/udp
     environment:
-      - SERVER_PORT=2456
-      - SERVER_NAME=[GameCenter] Valheim-1
-      - WORLD_NAME=Gameplay
-      - SERVER_PASS=gameplay
+      - PORT=2456
+      - NAME=[GameCenter] Valheim-1
+      - WORLD=Gameplay
+      - PASSWORD=gameplay
+      - ENABLE_CROSSPLAY=1
       - TZ=America/Sao_Paulo
-      - SERVER_PUBLIC=true
-      - SERVER_ARGS=-crossplay
-      - STATUS_HTTP=true
-      - STATUS_HTTP_PORT=80
-      - 'PRE_START_HOOK=curl --request POST --url https://discord.com/api/webhooks/1052696367337840750/A6CY2wHHrYfPqcJuNbNZihyIiZ9wl6TjMwi6vKTr6bgo7rfWe3VAv4IaL_xf-i3W5RyU --header "Content-Type: application/json" --data "{\"username\": \"Valheim\",\"content\": \"$$(eval echo Starting Valheim Server: $$SERVER_NAME)\",\"avatar_url\": \"https://gcdn.thunderstore.io/live/repository/icons/DrBratanPfanne-RoVModPack-2.0.14.png.128x128_q95.png\"}"'
-      - 'POST_SERVER_LISTENING_HOOK=curl --request POST --url https://discord.com/api/webhooks/1052696367337840750/A6CY2wHHrYfPqcJuNbNZihyIiZ9wl6TjMwi6vKTr6bgo7rfWe3VAv4IaL_xf-i3W5RyU --header "Content-Type: application/json" --data "{\"username\": \"Valheim\",\"content\": \"$$(eval echo Server ir READY! (Server: $$SERVER_NAME, World: $$WORLD_NAME))\",\"avatar_url\": \"https://gcdn.thunderstore.io/live/repository/icons/DrBratanPfanne-RoVModPack-2.0.14.png.128x128_q95.png\"}"'
-      - 'PRE_RESTART_HOOK=curl --request POST --url https://discord.com/api/webhooks/1052696367337840750/A6CY2wHHrYfPqcJuNbNZihyIiZ9wl6TjMwi6vKTr6bgo7rfWe3VAv4IaL_xf-i3W5RyU --header "Content-Type: application/json" --data "{\"username\": \"Valheim\",\"content\": \"$$(eval echo Restarting Valheim Server: $$SERVER_NAME)\",\"avatar_url\": \"https://gcdn.thunderstore.io/live/repository/icons/DrBratanPfanne-RoVModPack-2.0.14.png.128x128_q95.png\"}"'
-      - 'PRE_SERVER_SHUTDOWN_HOOK=curl --request POST --url https://discord.com/api/webhooks/1052696367337840750/A6CY2wHHrYfPqcJuNbNZihyIiZ9wl6TjMwi6vKTr6bgo7rfWe3VAv4IaL_xf-i3W5RyU --header "Content-Type: application/json" --data "{\"username\": \"Valheim\",\"content\": \"$$(eval echo Shuttingdown Valheim Server: $$SERVER_NAME )\",\"avatar_url\": \"https://gcdn.thunderstore.io/live/repository/icons/DrBratanPfanne-RoVModPack-2.0.14.png.128x128_q95.png\"}"'
+      - PUBLIC=1
+      - AUTO_UPDATE=1
+      - AUTO_UPDATE_SCHEDULE="0 1 * * *"
+      - AUTO_BACKUP=1
+      - AUTO_BACKUP_SCHEDULE="*/15 * * * *"
+      - AUTO_BACKUP_REMOVE_OLD=1
+      - AUTO_BACKUP_DAYS_TO_LIVE=3
+      - AUTO_BACKUP_ON_UPDATE=1
+      - AUTO_BACKUP_ON_SHUTDOWN=1
+    volumes:
+      - $HOME/valheim/saves:/home/steam/.config/unity3d/IronGate/Valheim
+      - $HOME/valheim/server:/home/steam/valheim
+      - $HOME/valheim/backups:/home/steam/backups

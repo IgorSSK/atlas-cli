@@ -27,9 +27,9 @@ sudo apt-get install cron
 echo "---------------------------------------------------------"
 
 # Download saves
-mkdir -p $HOME/valheim-server/config/worlds_local $HOME/valheim-server/data
-wget -P $HOME/valheim-server/config/worlds_local https://github.com/IgorSSK/GameCenter.DServers/blob/main/servers/valheim/saves/Gameplay.db
-wget -P $HOME/valheim-server/config/worlds_local https://github.com/IgorSSK/GameCenter.DServers/blob/main/servers/valheim/saves/Gameplay.fwl
+mkdir -p ./steam/valheim/saves/worlds_local ./steam/valheim/server ./steam/valheim/backups
+wget -P ./steam/valheim/saves/worlds_local https://github.com/saviocfm/valheimServer/raw/main/Gameplay.fwl
+wget -P ./steam/valheim/saves/worlds_local https://github.com/saviocfm/valheimServer/raw/main/Gameplay.db
 
 echo "---------------------------------------------------------"
 
