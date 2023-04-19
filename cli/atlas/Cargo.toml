@@ -1,0 +1,12 @@
+[package]
+name = "atlas"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.1.4", features = [ "derive" ] }
+a2s = { version = "0.5.1" }
+chrono = { version = "0.4.23" }
+rusqlite = { version = "0.28.0", features = ["bundled"] }
+regex = { version="1.7.1" }
+daemonize = { version="0.4.1" }
